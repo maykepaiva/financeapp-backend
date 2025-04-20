@@ -73,7 +73,7 @@ public class InvestimentoService {
 
         response.forEach(investimento -> {
             Armazenamento armazenamento = armazenamentos.stream()
-                    .filter(a->a.getId().equals(investimento.getId()))
+                    .filter(a->a.getId().equals(investimento.getArmazenamentoId()))
                     .findFirst()
                     .orElse(null);
             assert armazenamento != null;
