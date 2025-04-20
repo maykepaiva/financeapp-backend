@@ -1,0 +1,71 @@
+CREATE DATABASE educacao_financeira;
+
+-- Usuários
+CREATE TABLE usuarios (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    senha VARCHAR(255) NOT NULL
+);
+
+-- Receitas
+CREATE TABLE receitas (
+    id SERIAL PRIMARY KEY,
+    descricao VARCHAR(255) NOT NULL,
+    valor NUMERIC(10,2) NOT NULL,
+    data_recebimento DATE NOT NULL,
+    usuario_id INT NOT NULL,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
+);
+
+-- Despesas
+CREATE TABLE despesas (
+    id SERIAL PRIMARY KEY,
+    descricao VARCHAR(255) NOT NULL,
+    valor NUMERIC(10,2) NOT NULL,
+    data_pagamento DATE NOT NULL,
+    pago BOOLEAN DEFAULT FALSE NOT NULL,
+    usuario_id INT NOT NULL,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
+);
+
+-- Armazenamento
+CREATE TABLE armazenamentos (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL UNIQUE,
+    descricao TEXT
+);
+
+-- Metas Financeiras
+CREATE TABLE metas_financeiras (
+    id SERIAL PRIMARY KEY,
+    descricao VARCHAR(255) NOT NULL,
+    valor_objetivo NUMERIC(10,2) NOT NULL,
+    valor_acumulado NUMERIC(10,2) DEFAULT 0 NOT NULL,
+    prazo_inicial DATE NOT NULL,
+    prazo_final DATE NOT NULL,
+    concluida BOOLEAN DEFAULT FALSE NOT NULL,
+    usuario_id INT NOT NULL,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
+);
+
+-- Investimentos vinculados às metas
+CREATE TABLE investimentos (
+    id SERIAL PRIMARY KEY,
+    valor NUMERIC(10,2) NOT NULL,
+    data DATE NOT NULL,
+    meta_id INT NOT NULL,
+    armazenamento_id INT NOT NULL,
+    FOREIGN KEY (meta_id) REFERENCES metas_financeiras(id) ON DELETE CASCADE,
+    FOREIGN KEY (armazenamento_id) REFERENCES armazenamentos(id)
+);
+
+-- Notificações
+CREATE TABLE notificacoes (
+    id SERIAL PRIMARY KEY,
+    mensagem TEXT NOT NULL,
+    data_envio TIMESTAMP NOT NULL,
+    enviada BOOLEAN DEFAULT FALSE NOT NULL,
+    usuario_id INT NOT NULL,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
+);

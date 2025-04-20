@@ -1,0 +1,12 @@
+INSERT INTO armazenamentos (nome, descricao) values
+('Poupança', 'Investimento tradicional, com rendimento baixo e saque fácil. Ideal para metas de curto prazo e emergências.'),
+('Tesouro Direto', 'Investimento em títulos públicos, ideal para objetivos de médio a longo prazo.'),
+('CDB', 'Certificado de Depósito Bancário, com rendimento acima da poupança.'),
+('Ações', 'Investimento em empresas com maior risco e potencial de retorno.'),
+('Fundos Imobiliários', 'Investimento coletivo em imóveis, com pagamento de dividendos mensais.'),
+('Criptomoedas', 'Ativos digitais como Bitcoin, com alta volatilidade.'),
+('Previdência Privada', 'Investimento de longo prazo focado em aposentadoria.'),
+('ETFs', 'Fundos que replicam índices como Ibovespa ou S&P 500.'),
+('LCI/LCA', 'Investimentos isentos de IR, focados no setor imobiliário e agrícola.'),
+('Outro', 'Qualquer outro tipo de investimento personalizado.');
+commit;
