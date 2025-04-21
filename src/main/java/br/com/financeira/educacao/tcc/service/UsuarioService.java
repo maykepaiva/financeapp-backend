@@ -13,8 +13,8 @@ import org.springframework.stereotype.Service;
 public class UsuarioService{
 
     private final UsuarioRepository usuarioRepository;
-    private final PasswordEncoder passwordEncoder; // Para encriptar a senha
-    private final JwtService jwtService; // Para gerar tokens JWT (se necessário)
+    private final PasswordEncoder passwordEncoder;
+    private final JwtService jwtService;
 
 
     public Usuario cadastrar(UsuarioDTO usuarioDTO) {
@@ -26,7 +26,7 @@ public class UsuarioService{
         Usuario usuario = new Usuario();
         usuario.setNome(usuarioDTO.getNome());
         usuario.setEmail(usuarioDTO.getEmail());
-        usuario.setSenha(passwordEncoder.encode(usuarioDTO.getSenha())); // Senha segura
+        usuario.setSenha(passwordEncoder.encode(usuarioDTO.getSenha()));
 
         return usuarioRepository.save(usuario);
     }

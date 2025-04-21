@@ -13,7 +13,4 @@ import java.util.Optional;
 public interface MetaFinanceiraRepository extends JpaRepository<MetaFinanceira, Long> {
     List<MetaFinanceira> findByUsuarioId(Long usuarioId);
 
-//    @Query("SELECT m FROM MetaFinanceira m WHERE m.id = :metaId AND m.usuario.id = :usuarioId")
-//    List<MetaFinanceira> findByUsuarioId(@Param("usuarioId") Long usuarioId);
-
 }
