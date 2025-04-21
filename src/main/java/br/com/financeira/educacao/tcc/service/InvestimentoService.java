@@ -1,5 +1,3 @@
-// src/service/InvestimentoService.java
-
 package br.com.financeira.educacao.tcc.service;
 
 import br.com.financeira.educacao.tcc.domain.dto.InvestimentoDTO;

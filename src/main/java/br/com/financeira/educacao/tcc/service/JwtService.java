@@ -14,8 +14,8 @@ import java.util.Map;
 @Service
 public class JwtService {
 
-    private static final Key SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256); // Gera uma chave segura
-    private static final long EXPIRATION_TIME = 864_000_000; // 10 dias
+    private static final Key SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+    private static final long EXPIRATION_TIME = 864_000_000;
 
     public String generateToken(Long usuarioId, String email) {
         Map<String, Object> claims = new HashMap<>();
@@ -44,7 +44,7 @@ public class JwtService {
 
     public String getEmailFromToken(String token) {
         Claims claims = Jwts.parserBuilder()
-                .setSigningKey(SECRET_KEY) // ou .verifyWith(SECRET_KEY)
+                .setSigningKey(SECRET_KEY)
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
