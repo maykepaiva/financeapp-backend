@@ -58,3 +58,5 @@ A API estará disponível em http://localhost:8080/api.
 /api/receitas, /api/despesas
 
 /api/metas, /api/investimentos
+
+5. para rodar localmente necessita inserir no banco de dados todos os script de dados
